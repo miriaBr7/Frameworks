@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabela com Bootstrap</title>
+    <!-- Incluindo Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>Tabela de Alunos</h2>
+        <table class="table table-bordered">
+        <thead class="thead-dark">
+         <tr>
+    <th>ID</th>
+    <th>Nome</th>
+    <th>Idade</th>
+    <th>Ano</th>
+    </tr>
+     </thead>
+        <tbody>
+<?php
+    include "conexao.php";
+    $dados = $conn->query('select * from tds');
+
+    foreach ($dados as $aluno) {
+    echo "<tr>";
+    echo "<td>" . $aluno["id"] . "</td>";
+    echo "<td>" . $aluno["nome"] . "</td>";
+    echo "<td>" . $aluno["idade"] . "</td>";
+    echo "<td>" . $aluno["ano"] . "</td>";
+    echo "</tr>";
+    }
+    ?>
+    </tbody>
+    </table>
+    </div>
+
+    <!-- Incluindo Bootstrap JS (opcional, dependendo do uso) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
